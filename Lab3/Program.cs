@@ -6,7 +6,7 @@ namespace Lab3
     {
         private static void Main(string[] args)
         {
-            const string path = @"..\..\..\mushroom.png";
+            const string path = @"..\..\..\Images\mushroom.png";
             var dataCheck = new DataCheck(path);
             PrintFileTypeInformation(dataCheck.ClassObjectCreator(dataCheck.CheckFile()));
             
