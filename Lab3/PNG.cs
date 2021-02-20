@@ -6,14 +6,13 @@ namespace Lab3
 {
     public class Png
     {
+        private readonly List<ChunkInfo> _chunkInfos = new();
         private readonly byte[] _metaData;
-        private readonly List<ChunkInfo> _chunkInfos;
 
         public Png(byte[] metaData)
         {
             _metaData = metaData;
 
-            _chunkInfos = new List<ChunkInfo>();
             ChunkAdder();
         }
 
