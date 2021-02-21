@@ -40,7 +40,7 @@ namespace Lab3
             }
         }
 
-        public List<ChunkInfo> GetListOfChunks()
+        public IEnumerable<ChunkInfo> GetListOfChunks()
         {
             return _chunkInfos;
         }

@@ -15,32 +15,41 @@ namespace Lab3
     {
         private readonly string _path;
 
+        private readonly byte[] _metadata;
+
         public DataCheck(string path)
         {
             _path = path;
+            _metadata = OpenFile();
+
         }
 
-        private byte[] Metadata
+
+        private byte [] OpenFile()
         {
-            get
-            {
-                var fs = new FileStream(_path, FileMode.Open);
-                var fileSize = (int) fs.Length;
-                var data = new byte[fileSize];
-                fs.Read(data, 0, fileSize);
-                fs.Close();
-                return data;
-            }
+            var fs = new FileStream(_path, FileMode.Open);
+            var fileSize = (int) fs.Length;
+            var data = new byte[fileSize];
+            fs.Read(data, 0, fileSize);
+            fs.Close();
+            return data;
         }
+            
+            
+                
+            
+        
 
         public Enum CheckFile()
         {
             var pmgSignature = new byte[] {137, 80, 78, 71, 13, 10, 26, 10};
-            var firstEightByte = Metadata[..8];
-            switch (Metadata[0])
+            if (_metadata.Length < 1) return FileType.Invalid;
+            var firstEightByte = _metadata[..8];
+            switch (_metadata[0])
             {
                 case 66:
-                    if (Metadata[1] == 77)
+                    if (_metadata[1] == 77)
+                        
                         return FileType.Bmp;
                     break;
                 case 137:
@@ -58,8 +67,8 @@ namespace Lab3
         {
             return filetype switch
             {
-                FileType.Bmp => new Bmp(Metadata),
-                FileType.Png => new Png(Metadata),
+                FileType.Bmp => new Bmp(_metadata),
+                FileType.Png => new Png(_metadata),
                 _ => null
             };
         }
