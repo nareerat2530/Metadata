@@ -26,8 +26,7 @@ namespace Lab3
 
             while (!File.Exists(path))
             {
-                Console.WriteLine("File not find");
-                Console.WriteLine("Please insert a proper path");
+                Console.WriteLine("File not found! \nPlease insert a proper path");
                 path = Console.ReadLine();
             }
 
