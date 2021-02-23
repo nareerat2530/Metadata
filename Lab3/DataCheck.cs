@@ -13,19 +13,17 @@ namespace Lab3
 
     public class DataCheck
     {
-        private readonly string _path;
-
         private readonly byte[] _metadata;
+        private readonly string _path;
 
         public DataCheck(string path)
         {
             _path = path;
             _metadata = OpenFile();
-
         }
 
 
-        private byte [] OpenFile()
+        private byte[] OpenFile()
         {
             var fs = new FileStream(_path, FileMode.Open);
             var fileSize = (int) fs.Length;
@@ -34,11 +32,7 @@ namespace Lab3
             fs.Close();
             return data;
         }
-            
-            
-                
-            
-        
+
 
         public Enum CheckFile()
         {
@@ -49,7 +43,7 @@ namespace Lab3
             {
                 case 66:
                     if (_metadata[1] == 77)
-                        
+
                         return FileType.Bmp;
                     break;
                 case 137:
