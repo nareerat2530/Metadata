@@ -48,7 +48,7 @@ namespace Lab3
             Console.WriteLine("Here is the list of chunks:");
             foreach (var chunk in chunkList)
 
-                Console.WriteLine($"Chunkname is {chunk.Type}, Chunksize is {chunk.Size} bytes");
+                Console.WriteLine(chunk);
         }
     }
 }

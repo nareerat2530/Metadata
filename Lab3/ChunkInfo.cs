@@ -2,13 +2,19 @@
 {
     public class ChunkInfo
     {
-        public readonly int Size;
-        public readonly string Type;
+        private readonly int _sizeOfData;
+        private readonly string _type;
 
-        public ChunkInfo(int size, string type)
+
+        public ChunkInfo(int sizeOfData, string type)
         {
-            Size = size;
-            Type = type;
+            _sizeOfData = sizeOfData;
+            _type = type;
+        }
+
+        public override string ToString()
+        {
+            return $"Chunkname is {_type}, Chunksize is {_sizeOfData} bytes";
         }
     }
 }
