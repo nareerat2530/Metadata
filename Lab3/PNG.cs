@@ -31,8 +31,7 @@ namespace Lab3
                 {
                     var sizeSegment = new ArraySegment<byte>(_metaData, startIndex, 4);
                     chunkDataSize = chunkInformationSize + (sizeSegment[0] << 24) + (sizeSegment[1] << 16) +
-                                    (sizeSegment[2] << 8) +
-                                    sizeSegment[3];
+                                    (sizeSegment[2] << 8) + sizeSegment[3];
                     var typeSegment = new ArraySegment<byte>(_metaData, startIndex + 4, 4);
                     var chunkType = Encoding.ASCII.GetString(typeSegment);
                     _chunkInfos.Add(new ChunkInfo(chunkDataSize, chunkType));
